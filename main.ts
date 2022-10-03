@@ -1,3 +1,11 @@
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    mySprite2.vy += -200
+    pause(825)
+})
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+	
+})
+let mySprite2: Sprite = null
 tiles.setCurrentTilemap(tilemap`level1`)
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -121,7 +129,7 @@ scene.setBackgroundImage(img`
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
     `)
-let mySprite2 = sprites.create(img`
+mySprite2 = sprites.create(img`
     . . . . . . f f f f . . . . . . 
     . . . . f f f 2 2 f f f . . . . 
     . . . f f f 2 2 2 2 f f f . . . 
@@ -140,5 +148,5 @@ let mySprite2 = sprites.create(img`
     . . . . . f f . . f f . . . . . 
     `, SpriteKind.Player)
 scene.cameraFollowSprite(mySprite2)
-mySprite2.vy = 100
+mySprite2.ay = 500
 controller.moveSprite(mySprite2, 100, 0)
