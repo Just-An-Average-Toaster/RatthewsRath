@@ -1,0 +1,17 @@
+{
+    "image1": {
+        "data": "hwQQABAAAAAAAAAAMwAAAAAAADAAMwMAAAAAAAAAMAMAuwAAAAAAMLDdCwAAALs72x29AAC73b3bEbG7u93dvbAd293d3d09ALvdvd3dHTEA2/3d2x0RsQDb3d3bHRGxsNvd3bu7uzvbsd3dCzADMNsR+90LAAAA29EL2wsAAACwuwAwAAAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Ratthew"
+    },
+    "image2": {
+        "data": "hwQQABAAAACwuwAwAAAAANvRC9sLAAAA2xH73QsAAADbsd3dCzADMLDb3d27u7s7ANvd3dsdEbEA2/3d2x0RsQC73b3d3R0xsB3b3d3d3T3bEbG7u93dvdsdvQAAu929sN0LAAAAuzsAuwAAAAAAMAAAAAAAADADAAAAMAAzAwAAAAAAMwAAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "RatthewOther"
+    },
+    "*": {
+        "mimeType": "image/x-mkcd-f4",
+        "dataEncoding": "base64",
+        "namespace": "myImages"
+    }
+}
