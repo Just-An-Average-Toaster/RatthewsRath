@@ -1,4 +1,4 @@
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Sewage`, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, assets.tile`BadWater`, function (sprite, location) {
     game.over(false, effects.melt)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`EndPipe`, function (sprite, location) {

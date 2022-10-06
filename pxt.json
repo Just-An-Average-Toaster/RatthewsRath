@@ -3,7 +3,9 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "darts": "*"
+        "darts": "*",
+        "sprite-scaling": "*",
+        "arcade-tile-util": "github:microsoft/arcade-tile-util#v1.0.1"
     },
     "files": [
         "main.blocks",

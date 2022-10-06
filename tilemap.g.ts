@@ -10,6 +10,8 @@ namespace myTiles {
     export const tile3 = image.ofBuffer(hex``);
     //% fixedInstance jres blockIdentity=images._tile
     export const tile4 = image.ofBuffer(hex``);
+    //% fixedInstance jres blockIdentity=images._tile
+    export const tile5 = image.ofBuffer(hex``);
 
     helpers._registerFactory("tilemap", function(name: string) {
         switch(helpers.stringTrim(name)) {
@@ -33,8 +35,8 @@ namespace myTiles {
 .............................2222.................
 ..................................................
 2222222222222222222222222222......2222222222222222
-22222222222222222222222222222222222222222222222222
-22222222222222222222222222222222222222222222222222
+2222222222222222222222222222......2222222222222222
+2222222222222222222222222222......2222222222222222
 `, [myTiles.transparency16,sprites.dungeon.floorLight0,sprites.dungeon.floorLight1,myTiles.tile1,sprites.dungeon.floorLight4,myTiles.tile2,myTiles.tile3,sprites.dungeon.floorMixed,sprites.dungeon.floorDark0,sprites.dungeon.floorLightMoss,sprites.dungeon.floorDark1,sprites.dungeon.floorDark4,myTiles.tile4], TileScale.Sixteen);
         }
         return null;
@@ -51,6 +53,8 @@ namespace myTiles {
             case "tile3":return tile3;
             case "Spikes":
             case "tile4":return tile4;
+            case "myTile":
+            case "tile5":return tile5;
         }
         return null;
     })
