@@ -4,6 +4,12 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`BadWater`, function (sprite, 
 scene.onOverlapTile(SpriteKind.Player, assets.tile`EndPipe`, function (sprite, location) {
     game.over(true, effects.splatter)
 })
+controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
+    Boomerang = sprites.create(BoomerangImage[0], SpriteKind.Projectile)
+    Boomerang.setPosition(mySprite2.x, mySprite2.y)
+    Boomerang.setVelocity(150, 0)
+    Animate = true
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (mySprite2.vy == 0) {
         mySprite2.vy += -200
@@ -12,12 +18,26 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite2.setImage(assets.image`RatthewOther`)
 })
+function swapImages () {
+    if (Boomerang.image == BoomerangImage[0]) {
+        Boomerang.setImage(BoomerangImage[1])
+    } else if (Boomerang.image == BoomerangImage[1]) {
+        Boomerang.setImage(BoomerangImage[2])
+    } else if (Boomerang.image == BoomerangImage[2]) {
+        Boomerang.setImage(BoomerangImage[3])
+    } else {
+        Boomerang.setImage(BoomerangImage[0])
+    }
+}
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite2.setImage(assets.image`Ratthew`)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Spikes`, function (sprite, location) {
     game.over(false, effects.slash)
 })
+let Boomerang: Sprite = null
+let Animate = false
+let BoomerangImage: Image[] = []
 let mySprite2: Sprite = null
 tiles.setCurrentTilemap(tilemap`level1`)
 scene.setBackgroundImage(img`
@@ -147,3 +167,15 @@ scene.cameraFollowSprite(mySprite2)
 mySprite2.ay = 500
 controller.moveSprite(mySprite2, 100, 0)
 mySprite2.setPosition(45, 265)
+BoomerangImage = [
+assets.image`Ratarang1`,
+assets.image`Ratarang2`,
+assets.image`Ratarang3`,
+assets.image`Ratarang4`
+]
+Animate = false
+game.onUpdateInterval(80, function () {
+    if (Animate == true) {
+        swapImages()
+    }
+})
