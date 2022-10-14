@@ -174,6 +174,8 @@ assets.image`Ratarang3`,
 assets.image`Ratarang4`
 ]
 Animate = false
+tileUtil.createSpritesOnTiles(assets.tile`Sewage`, assets.image`Sewage Sprite`, SpriteKind.Enemy)
+tileUtil.createSpritesOnTiles(assets.tile`BadWater`, assets.image`Badwater sprite`, SpriteKind.Enemy)
 game.onUpdateInterval(80, function () {
     if (Animate == true) {
         swapImages()
