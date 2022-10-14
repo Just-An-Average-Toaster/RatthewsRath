@@ -29,6 +29,16 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Ratarang4"
     },
+    "image8": {
+        "data": "hwQQABAAAACqiKiIiKqKqoqIiIqIioqoioqIiIiIiIioiIiIiIiqiKiIqoqIiIiIqIiIiIqIiIiIqIiIqIiKiIiIqIqoiKiIioqoqIiIiIiIiIiIiIiqiIiIiIiKiIiIiIqIqKqIioiIqoiIiIiIiIqIiKqIiIiIqoiIiIiIiKiqqoqIqIiIqg==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Badwater sprite"
+    },
+    "image7": {
+        "data": "hwQQABAAAAAAAAB4iIiIqAAAcGaGiIiIAABghoiIiKoAAIdgdoiIqAAAh4iIiIiIAABgaIiIiKh4cGB2iHiIiIAAeIaIaIiIcIZ4hohniIhgaIiHiIaIiAB3gIiIiIiIAABoiIiIiIgAAHCGiIiIqAAAgIaIiIiqAACAh4iIiKgAAGaIiIiIqg==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Sewage Sprite"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",
