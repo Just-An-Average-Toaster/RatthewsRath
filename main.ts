@@ -168,10 +168,10 @@ mySprite2.ay = 500
 controller.moveSprite(mySprite2, 100, 0)
 mySprite2.setPosition(45, 265)
 BoomerangImage = [
-assets.image`Ratarang1`,
-assets.image`Ratarang2`,
-assets.image`Ratarang3`,
-assets.image`Ratarang4`
+,
+assets.image`myImage`,
+,
+
 ]
 Animate = false
 game.onUpdateInterval(80, function () {
