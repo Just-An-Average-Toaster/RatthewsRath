@@ -168,12 +168,14 @@ mySprite2.ay = 500
 controller.moveSprite(mySprite2, 100, 0)
 mySprite2.setPosition(45, 265)
 BoomerangImage = [
-,
-assets.image`myImage`,
-,
-
+assets.image`Ratarang1`,
+assets.image`Ratarang2`,
+assets.image`Ratarang3`,
+assets.image`Ratarang4`
 ]
 Animate = false
+tileUtil.createSpritesOnTiles(assets.tile`Sewage`, assets.image`myImage`, SpriteKind.Enemy)
+tileUtil.createSpritesOnTiles(assets.tile`BadWater`, assets.image`myImage0`, SpriteKind.Enemy)
 game.onUpdateInterval(80, function () {
     if (Animate == true) {
         swapImages()
