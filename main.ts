@@ -8,7 +8,7 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (oneBoomerang == true) {
         Boomerang = sprites.create(BoomerangImage[0], SpriteKind.Projectile)
         Boomerang.setPosition(mySprite2.x, mySprite2.y)
-        Boomerang.setVelocity(150, 0)
+        Boomerang.setVelocity(Direction, 0)
         Animate = true
         isNew = true
         oneBoomerang = false
@@ -21,6 +21,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite2.setImage(assets.image`RatthewOther`)
+    Direction = -150
 })
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, otherSprite) {
     if (isNew == false) {
@@ -41,6 +42,7 @@ function swapImages () {
 }
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite2.setImage(assets.image`Ratthew`)
+    Direction = 150
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     if (isNew == false) {
@@ -52,6 +54,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Spikes`, function (sprite, lo
     game.over(false, effects.slash)
 })
 let isNew = false
+let Direction = 0
 let Boomerang: Sprite = null
 let oneBoomerang = false
 let Animate = false
@@ -203,6 +206,10 @@ game.onUpdateInterval(80, function () {
 })
 game.onUpdateInterval(1, function () {
     if (Animate == true && Boomerang.x > mySprite2.x + 69) {
+        Boomerang.follow(mySprite2, 150)
+        isNew = false
+    }
+    if (Animate == true && Boomerang.x > mySprite2.x - 69) {
         Boomerang.follow(mySprite2, 150)
         isNew = false
     }
