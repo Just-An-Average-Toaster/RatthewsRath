@@ -29,15 +29,15 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Ratarang4"
     },
-    "image8": {
-        "data": "hwQQABAAAACqiKiIiKqKqoqIiIqIioqoioqIiIiIiIioiIiIiIiqiKiIqoqIiIiIqIiIiIqIiIiIqIiIqIiKiIiIqIqoiKiIioqoqIiIiIiIiIiIiIiqiIiIiIiKiIiIiIqIqKqIioiIqoiIiIiIiIqIiKqIiIiIqoiIiIiIiKiqqoqIqIiIqg==",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "Badwater sprite"
-    },
     "image7": {
         "data": "hwQQABAAAAAAAAB4iIiIqAAAcGaGiIiIAABghoiIiKoAAIdgdoiIqAAAh4iIiIiIAABgaIiIiKh4cGB2iHiIiIAAeIaIaIiIcIZ4hohniIhgaIiHiIaIiAB3gIiIiIiIAABoiIiIiIgAAHCGiIiIqAAAgIaIiIiqAACAh4iIiKgAAGaIiIiIqg==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Sewage Sprite"
+    },
+    "image8": {
+        "data": "hwQQABAAAAAAAFVVVVUAAABVVVVVVVUAUFVVVVVVVQVQVVVV/19VBVVVVVX1/1VVVfX/VVX/VVVV9f9VVf9VVVVVVVVV/1VVVVVVVVX/VVVV9f9VVf9VVVX1/1VV/1VVVVVVVfX/VVVQVVVV/19VBVBVVVVVVVUFAFVVVVVVVQAAAFVVVVUAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Davest"
     },
     "*": {
         "mimeType": "image/x-mkcd-f4",
