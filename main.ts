@@ -5,12 +5,14 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`EndPipe`, function (sprite, l
     game.over(true, effects.splatter)
 })
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
-    Boomerang = sprites.create(BoomerangImage[0], SpriteKind.Projectile)
-    Boomerang.setPosition(mySprite2.x, mySprite2.y)
-    Boomerang.setVelocity(150, 0)
-    Animate = true
-    isNew = true
-    oneBoomerang = true
+    if (oneBoomerang == true) {
+        Boomerang = sprites.create(BoomerangImage[0], SpriteKind.Projectile)
+        Boomerang.setPosition(mySprite2.x, mySprite2.y)
+        Boomerang.setVelocity(150, 0)
+        Animate = true
+        isNew = true
+        oneBoomerang = false
+    }
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (mySprite2.vy == 0) {
@@ -19,6 +21,12 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite2.setImage(assets.image`RatthewOther`)
+})
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, otherSprite) {
+    if (isNew == false) {
+        otherSprite.destroy()
+        oneBoomerang = true
+    }
 })
 function swapImages () {
     if (Boomerang.image == BoomerangImage[0]) {
@@ -37,14 +45,15 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     if (isNew == false) {
         otherSprite.destroy()
+        oneBoomerang = true
     }
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Spikes`, function (sprite, location) {
     game.over(false, effects.slash)
 })
-let oneBoomerang = false
 let isNew = false
 let Boomerang: Sprite = null
+let oneBoomerang = false
 let Animate = false
 let BoomerangImage: Image[] = []
 let mySprite2: Sprite = null
@@ -183,6 +192,7 @@ assets.image`Ratarang3`,
 assets.image`Ratarang4`
 ]
 Animate = false
+oneBoomerang = true
 tileUtil.createSpritesOnTiles(assets.tile`Sewage`, assets.image`Sewage Sprite`, SpriteKind.Enemy)
 tileUtil.createSpritesOnTiles(assets.tile`BadWater`, assets.image`Davest`, SpriteKind.Enemy)
 tileUtil.createSpritesOnTiles(assets.tile`Dave`, assets.image`Davest`, SpriteKind.Enemy)
@@ -191,8 +201,8 @@ game.onUpdateInterval(80, function () {
         swapImages()
     }
 })
-game.onUpdateInterval(100, function () {
-    if (Animate == true && Boomerang.x > mySprite2.x + 75) {
+game.onUpdateInterval(1, function () {
+    if (Animate == true && Boomerang.x > mySprite2.x + 69) {
         Boomerang.follow(mySprite2, 150)
         isNew = false
     }
