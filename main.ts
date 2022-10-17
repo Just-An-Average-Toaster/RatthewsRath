@@ -54,8 +54,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Spikes`, function (sprite, lo
     game.over(false, effects.slash)
 })
 let isNew = false
-let Direction = 0
 let Boomerang: Sprite = null
+let Direction = 0
 let oneBoomerang = false
 let Animate = false
 let BoomerangImage: Image[] = []
@@ -199,6 +199,7 @@ oneBoomerang = true
 tileUtil.createSpritesOnTiles(assets.tile`Sewage`, assets.image`Sewage Sprite`, SpriteKind.Enemy)
 tileUtil.createSpritesOnTiles(assets.tile`BadWater`, assets.image`Davest`, SpriteKind.Enemy)
 tileUtil.createSpritesOnTiles(assets.tile`Dave`, assets.image`Davest`, SpriteKind.Enemy)
+Direction = 150
 game.onUpdateInterval(80, function () {
     if (Animate == true) {
         swapImages()
@@ -206,10 +207,6 @@ game.onUpdateInterval(80, function () {
 })
 game.onUpdateInterval(1, function () {
     if (Animate == true && Boomerang.x > mySprite2.x + 69) {
-        Boomerang.follow(mySprite2, 150)
-        isNew = false
-    }
-    if (Animate == true && Boomerang.x > mySprite2.x - 69) {
         Boomerang.follow(mySprite2, 150)
         isNew = false
     }
