@@ -23,12 +23,6 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite2.setImage(assets.image`RatthewOther`)
     Direction = -150
 })
-sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, otherSprite) {
-    if (isNew == false) {
-        otherSprite.destroy()
-        oneBoomerang = true
-    }
-})
 function swapImages () {
     if (Boomerang.image == BoomerangImage[0]) {
         Boomerang.setImage(BoomerangImage[1])
@@ -52,6 +46,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Spikes`, function (sprite, location) {
     game.over(false, effects.slash)
+})
+scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
+    Boomerang.follow(mySprite2, 150)
+    isNew = false
 })
 function ELijahs_COde () {
     let list: number[] = []
@@ -204,7 +202,6 @@ Animate = false
 oneBoomerang = true
 tileUtil.createSpritesOnTiles(assets.tile`Sewage`, assets.image`Sewage Sprite`, SpriteKind.Enemy)
 tileUtil.createSpritesOnTiles(assets.tile`BadWater`, assets.image`Davest`, SpriteKind.Enemy)
-tileUtil.createSpritesOnTiles(assets.tile`Dave`, assets.image`Davest`, SpriteKind.Enemy)
 Direction = 150
 ELijahs_COde()
 game.onUpdateInterval(80, function () {
@@ -214,6 +211,10 @@ game.onUpdateInterval(80, function () {
 })
 game.onUpdateInterval(1, function () {
     if (Animate == true && Boomerang.x > mySprite2.x + 69) {
+        Boomerang.follow(mySprite2, 150)
+        isNew = false
+    }
+    if (Animate == true && Boomerang.x < mySprite2.x - 69) {
         Boomerang.follow(mySprite2, 150)
         isNew = false
     }
