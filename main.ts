@@ -56,6 +56,10 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSp
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Spikes`, function (sprite, location) {
     game.over(false, effects.slash)
 })
+scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
+    Boomerang.follow(mySprite2, 150)
+    isNew = false
+})
 function ELijahs_COde () {
     for (let RoachL of tiles.getTilesByType(assets.tile`Roach`)) {
         Roach = sprites.create(img`
@@ -80,7 +84,7 @@ function ELijahs_COde () {
         tiles.setTileAt(RoachL, assets.tile`transparency16`)
         Roach.ay = 50
     }
-    Roach.follow(mySprite2, 100)
+    Roach.follow(mySprite2, 0)
 }
 let Roach: Sprite = null
 let isNew = false
@@ -236,6 +240,10 @@ game.onUpdateInterval(80, function () {
 })
 game.onUpdateInterval(1, function () {
     if (Animate == true && Boomerang.x > mySprite2.x + 69) {
+        Boomerang.follow(mySprite2, 150)
+        isNew = false
+    }
+    if (Animate == true && Boomerang.x < mySprite2.x - 69) {
         Boomerang.follow(mySprite2, 150)
         isNew = false
     }
