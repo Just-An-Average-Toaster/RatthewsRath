@@ -24,8 +24,8 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     Direction = -150
 })
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, otherSprite) {
+    sprite.destroy(effects.fountain, 500)
     if (isNew == false) {
-        otherSprite.destroy()
         oneBoomerang = true
     }
 })
