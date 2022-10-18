@@ -50,39 +50,15 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
         oneBoomerang = true
     }
 })
-sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
-    game.over(false, effects.slash)
-})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Spikes`, function (sprite, location) {
     game.over(false, effects.slash)
 })
 function ELijahs_COde () {
-    for (let RoachL of tiles.getTilesByType(assets.tile`Roach`)) {
-        Roach = sprites.create(img`
-            . . . . . . . . . . b 5 b . . . 
-            . . . . . . . . . b 5 b . . . . 
-            . . . . . . . . . b c . . . . . 
-            . . . . . . b b b b b b . . . . 
-            . . . . . b b 5 5 5 5 5 b . . . 
-            . . . . b b 5 d 1 f 5 5 d f . . 
-            . . . . b 5 5 1 f f 5 d 4 c . . 
-            . . . . b 5 5 d f b d d 4 4 . . 
-            b d d d b b d 5 5 5 4 4 4 4 4 b 
-            b b d 5 5 5 b 5 5 4 4 4 4 4 b . 
-            b d c 5 5 5 5 d 5 5 5 5 5 b . . 
-            c d d c d 5 5 b 5 5 5 5 5 5 b . 
-            c b d d c c b 5 5 5 5 5 5 5 b . 
-            . c d d d d d d 5 5 5 5 5 d b . 
-            . . c b d d d d d 5 5 5 b b . . 
-            . . . c c c c c c c c b b . . . 
-            `, SpriteKind.Enemy)
-        tiles.placeOnTile(Roach, RoachL)
-        tiles.setTileAt(RoachL, assets.tile`transparency16`)
-        Roach.ay = 50
+    let list: number[] = []
+    for (let value of list) {
+    	
     }
-    Roach.follow(mySprite2, 100)
 }
-let Roach: Sprite = null
 let isNew = false
 let Boomerang: Sprite = null
 let Direction = 0
@@ -227,6 +203,8 @@ assets.image`Ratarang4`
 Animate = false
 oneBoomerang = true
 tileUtil.createSpritesOnTiles(assets.tile`Sewage`, assets.image`Sewage Sprite`, SpriteKind.Enemy)
+tileUtil.createSpritesOnTiles(assets.tile`BadWater`, assets.image`Davest`, SpriteKind.Enemy)
+tileUtil.createSpritesOnTiles(assets.tile`Dave`, assets.image`Davest`, SpriteKind.Enemy)
 Direction = 150
 ELijahs_COde()
 game.onUpdateInterval(80, function () {
