@@ -53,6 +53,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Spikes`, function (sprite, location) {
     game.over(false, effects.slash)
 })
+function ELijahs_COde () {
+    let list: number[] = []
+    for (let value of list) {
+    	
+    }
+}
 let isNew = false
 let Boomerang: Sprite = null
 let Direction = 0
@@ -200,6 +206,7 @@ tileUtil.createSpritesOnTiles(assets.tile`Sewage`, assets.image`Sewage Sprite`, 
 tileUtil.createSpritesOnTiles(assets.tile`BadWater`, assets.image`Davest`, SpriteKind.Enemy)
 tileUtil.createSpritesOnTiles(assets.tile`Dave`, assets.image`Davest`, SpriteKind.Enemy)
 Direction = 150
+ELijahs_COde()
 game.onUpdateInterval(80, function () {
     if (Animate == true) {
         swapImages()
