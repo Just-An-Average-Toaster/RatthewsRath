@@ -39,6 +39,11 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Davest"
     },
+    "image9": {
+        "data": "hwQQABAAAAAAAACwAAAAAAAAAEALuwsAAADPRLRVvQALsE1EVFW1C7Vb1U1UVVULW1tVTVRVVQywW/9bVFVVDABb8V9VVdUMAFsdXVW93QwAu1VVvVXbDACwW1VbVdwMAAC721vV3AwAAACwXcW9DAAAALDd3M0AAAAAsL29DAAAAAAAu8wAAA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "Roach other direction"
+    },
     "*": {
         "mimeType": "image/x-mkcd-f4",
         "dataEncoding": "base64",

@@ -62,29 +62,12 @@ scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
 })
 function ELijahs_COde () {
     for (let RoachL of tiles.getTilesByType(assets.tile`Roach`)) {
-        Roach = sprites.create(img`
-            . . . . . . . . . . b 5 b . . . 
-            . . . . . . . . . b 5 b . . . . 
-            . . . . . . . . . b c . . . . . 
-            . . . . . . b b b b b b . . . . 
-            . . . . . b b 5 5 5 5 5 b . . . 
-            . . . . b b 5 d 1 f 5 5 d f . . 
-            . . . . b 5 5 1 f f 5 d 4 c . . 
-            . . . . b 5 5 d f b d d 4 4 . . 
-            b d d d b b d 5 5 5 4 4 4 4 4 b 
-            b b d 5 5 5 b 5 5 4 4 4 4 4 b . 
-            b d c 5 5 5 5 d 5 5 5 5 5 b . . 
-            c d d c d 5 5 b 5 5 5 5 5 5 b . 
-            c b d d c c b 5 5 5 5 5 5 5 b . 
-            . c d d d d d d 5 5 5 5 5 d b . 
-            . . c b d d d d d 5 5 5 b b . . 
-            . . . c c c c c c c c b b . . . 
-            `, SpriteKind.Enemy)
+        Roach = sprites.create(assets.image`Roach other direction`, SpriteKind.Enemy)
         tiles.placeOnTile(Roach, RoachL)
         tiles.setTileAt(RoachL, assets.tile`transparency16`)
         Roach.ay = 50
+        Roach.setVelocity(-50, 0)
     }
-    Roach.follow(mySprite2, 0)
 }
 let Roach: Sprite = null
 let isNew = false
@@ -233,6 +216,34 @@ oneBoomerang = true
 tileUtil.createSpritesOnTiles(assets.tile`Sewage`, assets.image`Sewage Sprite`, SpriteKind.Enemy)
 Direction = 150
 ELijahs_COde()
+game.onUpdate(function () {
+    for (let BUMMMMMMMMMPPPPPP of sprites.allOfKind(SpriteKind.Enemy)) {
+        if (BUMMMMMMMMMPPPPPP.isHittingTile(CollisionDirection.Left)) {
+            BUMMMMMMMMMPPPPPP.setImage(img`
+                . . . . . . . . . . b 5 b . . . 
+                . . . . . . . . . b 5 b . . . . 
+                . . . . . . . . . b c . . . . . 
+                . . . . . . b b b b b b . . . . 
+                . . . . . b b 5 5 5 5 5 b . . . 
+                . . . . b b 5 d 1 f 5 5 d f . . 
+                . . . . b 5 5 1 f f 5 d 4 c . . 
+                . . . . b 5 5 d f b d d 4 4 . . 
+                b d d d b b d 5 5 5 4 4 4 4 4 b 
+                b b d 5 5 5 b 5 5 4 4 4 4 4 b . 
+                b d c 5 5 5 5 d 5 5 5 5 5 b . . 
+                c d d c d 5 5 b 5 5 5 5 5 5 b . 
+                c b d d c c b 5 5 5 5 5 5 5 b . 
+                . c d d d d d d 5 5 5 5 5 d b . 
+                . . c b d d d d d 5 5 5 b b . . 
+                . . . c c c c c c c c b b . . . 
+                `)
+            BUMMMMMMMMMPPPPPP.vx = 50
+        } else if (BUMMMMMMMMMPPPPPP.isHittingTile(CollisionDirection.Right)) {
+            BUMMMMMMMMMPPPPPP.setImage(assets.image`Roach other direction`)
+            BUMMMMMMMMMPPPPPP.vx = -50
+        }
+    }
+})
 game.onUpdateInterval(80, function () {
     if (Animate == true) {
         swapImages()
