@@ -68,7 +68,15 @@ function ELijahs_COde () {
         Roach.ay = 50
         Roach.setVelocity(-50, 0)
     }
+    for (let RoachL of tiles.getTilesByType(assets.tile`Roach`)) {
+        SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE = sprites.create(assets.image`Roach other direction`, SpriteKind.Enemy)
+        tiles.placeOnTile(Roach, RoachL)
+        tiles.setTileAt(RoachL, assets.tile`transparency16`)
+        Roach.ay = 50
+        Roach.setVelocity(-50, 0)
+    }
 }
+let SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE: Sprite = null
 let Roach: Sprite = null
 let isNew = false
 let Boomerang: Sprite = null
