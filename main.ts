@@ -61,6 +61,10 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSp
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Spikes`, function (sprite, location) {
     game.over(false, effects.slash)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
+    pause(250)
+    Text += 1
+})
 scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
     Boomerang.follow(mySprite2, 150)
     isNew = false
@@ -99,7 +103,7 @@ let oneBoomerang = false
 let Animate = false
 let BoomerangImage: Image[] = []
 let mySprite2: Sprite = null
-tiles.setCurrentTilemap(tilemap`level1`)
+tiles.setCurrentTilemap(tilemap`level0`)
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -236,7 +240,9 @@ assets.image`Ratarang4`
 Animate = false
 oneBoomerang = true
 tileUtil.createSpritesOnTiles(assets.tile`Sewage`, assets.image`Sewage Sprite`, SpriteKind.Enemy)
+tileUtil.createSpritesOnTiles(assets.tile`Sign`, assets.image`flor`, SpriteKind.Food)
 Direction = 150
+let Text = 0
 ELijahs_COde()
 game.onUpdate(function () {
     for (let BUMMMMMMMMMPPPPPP of sprites.allOfKind(SpriteKind.Enemy)) {
@@ -279,5 +285,9 @@ game.onUpdateInterval(1, function () {
     if (Animate == true && Boomerang.x < mySprite2.x - 69) {
         Boomerang.follow(mySprite2, 150)
         isNew = false
+    }
+    if (Text == 1) {
+        game.showLongText("fortnite", DialogLayout.Bottom)
+        Text += -1
     }
 })
