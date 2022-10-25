@@ -44,11 +44,6 @@
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Roach other direction"
     },
-    "image12": {
-        "data": "hwQQABAAAAAAd/d/d3d3AAB3d/d/d3cAAH93d/d/dwAA93d3d/93AAD3f3d3938AAHf3d3d39wAAd3f/d3d3AAB3d/d/d3cAAH93d/93dwAA93d39393AAD3d3d3/38AAHf/d3d3fwAAd/d/d3d3AAB/d/d/d3cAAP93d/d/dwAA9393d/9/AA==",
-        "mimeType": "image/x-mkcd-f4",
-        "displayName": "LOng boi 2"
-    },
     "image10": {
         "data": "hwQQABAAAAAAAAAAAAAAAAAAcHd3AAAAAHB3d3f3AAAAcHd3d/8AAABwd3d3fwcAAHf3d3d/BwAAd/93d393AAD3f393/3cAAPd3d3f3fwAAd3d3d3d/AAB3d3d3d3cAAHd3d3d3dwAA/3d3d3d3AAD3f3d3d3cAAHf3/3d3dwAAd3d3/393AA==",
         "mimeType": "image/x-mkcd-f4",
@@ -58,6 +53,11 @@
         "data": "hwQQABAAAAAAd3d39393AAB3d3d3/38AAP93d3d3/wAA9393d3d3AAB39393d3cAAHd39393dwAAd3d3/393AAB3d3d3/38AAH93d3d3/wAA9393d3d3AAB3/393d3cAAHd3/3d3dwAAf3d3/3d3AAD3f3d3/3cAAHf/d3f3/wAAd/d/d3f3AA==",
         "mimeType": "image/x-mkcd-f4",
         "displayName": "Greenthing body 1"
+    },
+    "image12": {
+        "data": "hwQQABAAAAAAd/d/d3d3AAB3d/d/d3cAAH93d/d/dwAA93d3d/93AAD3f3d3938AAHf3d3d39wAAd3f/d3d3AAB3d/d/d3cAAH93d/93dwAA93d39393AAD3d3d3/38AAHf/d3d3fwAAd/d/d3d3AAB/d/d/d3cAAP93d/d/dwAA9393d/9/AA==",
+        "mimeType": "image/x-mkcd-f4",
+        "displayName": "LOng boi 2"
     },
     "image13": {
         "data": "hwQQABAAAAAA9393d3d3AAB3/393d3cAAHd3/393dwAAf3d3//93AAD3d3d3938AAPf/d3d39wAAd/f/d3d3AAB3d/d3d3cAAHd35+7e7gAAd+7u7e7uAADu7e7u7e4AAO7e7e7eAAAAAO7e3Q0AAAAA0N0AAAAAAAAAAAAAAAAAAAAAAAAAAA==",

@@ -2,7 +2,9 @@ namespace SpriteKind {
     export const Snake = SpriteKind.create()
     export const SnakeBodies = SpriteKind.create()
 }
-let Snakelist: number[] = []
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Snake, function (sprite, otherSprite) {
+    game.over(false)
+})
 scene.onOverlapTile(SpriteKind.Player, assets.tile`BadWater`, function (sprite, location) {
     game.over(false, effects.melt)
 })
@@ -18,6 +20,9 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         isNew = true
         oneBoomerang = false
     }
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.SnakeBodies, function (sprite, otherSprite) {
+    game.over(false)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (mySprite2.vy == 0) {
@@ -61,6 +66,10 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSp
 scene.onOverlapTile(SpriteKind.Player, assets.tile`Spikes`, function (sprite, location) {
     game.over(false, effects.slash)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
+    pause(250)
+    Text += 1
+})
 scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
     Boomerang.follow(mySprite2, 150)
     isNew = false
@@ -80,16 +89,22 @@ function ELijahs_COde () {
         SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE = sprites.create(assets.image`Snake Head`, SpriteKind.Snake)
         tiles.placeOnTile(SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE, SnakeV)
         tiles.setTileAt(SnakeV, assets.tile`transparency16`)
-        SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.ay = 50
+        SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.follow(mySprite2, 53)
         tiles.setTileAt(tiles.getTileLocation(0, 0), assets.tile`transparency16`)
-        for (let SnakeB1 of Snakelist) {
-            Snakebody1 = sprites.create(assets.image`Greenthing body 1`, SpriteKind.SnakeBodies)
-            Snakebody1.setPosition(SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.x, SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.y)
-            SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.ay = 50
-        }
+        snakebody1 = sprites.create(assets.image`Greenthing body 1`, SpriteKind.SnakeBodies)
+        snakebody1.setPosition(SnakeV.x + 13, SnakeV.y)
+        snakebody1.follow(SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE, 52)
+        greenboibody2 = sprites.create(assets.image`LOng boi 2`, SpriteKind.SnakeBodies)
+        greenboibody2.setPosition(SnakeV.x + 26, SnakeV.y)
+        greenboibody2.follow(snakebody1, 51)
+        LOng_green_guy_thingy_3_tail_end = sprites.create(assets.image`Long GReeennnn thingy tail`, SpriteKind.SnakeBodies)
+        LOng_green_guy_thingy_3_tail_end.setPosition(SnakeV.x + 39, SnakeV.y)
+        LOng_green_guy_thingy_3_tail_end.follow(greenboibody2, 50)
     }
 }
-let Snakebody1: Sprite = null
+let LOng_green_guy_thingy_3_tail_end: Sprite = null
+let greenboibody2: Sprite = null
+let snakebody1: Sprite = null
 let SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE: Sprite = null
 let Roach: Sprite = null
 let isNew = false
@@ -236,7 +251,9 @@ assets.image`Ratarang4`
 Animate = false
 oneBoomerang = true
 tileUtil.createSpritesOnTiles(assets.tile`Sewage`, assets.image`Sewage Sprite`, SpriteKind.Enemy)
+tileUtil.createSpritesOnTiles(assets.tile`Sign`, assets.image`flor`, SpriteKind.Food)
 Direction = 150
+let Text = 0
 ELijahs_COde()
 game.onUpdate(function () {
     for (let BUMMMMMMMMMPPPPPP of sprites.allOfKind(SpriteKind.Enemy)) {
@@ -279,5 +296,9 @@ game.onUpdateInterval(1, function () {
     if (Animate == true && Boomerang.x < mySprite2.x - 69) {
         Boomerang.follow(mySprite2, 150)
         isNew = false
+    }
+    if (Text == 1) {
+        game.showLongText("fortnite", DialogLayout.Bottom)
+        Text += -1
     }
 })
