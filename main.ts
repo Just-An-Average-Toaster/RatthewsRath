@@ -2,6 +2,7 @@ namespace SpriteKind {
     export const Snake = SpriteKind.create()
     export const SnakeBodies = SpriteKind.create()
 }
+let Snakelist: number[] = []
 scene.onOverlapTile(SpriteKind.Player, assets.tile`BadWater`, function (sprite, location) {
     game.over(false, effects.melt)
 })
@@ -65,10 +66,7 @@ scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
     isNew = false
 })
 sprites.onCreated(SpriteKind.Snake, function (sprite) {
-    for (let SnakeB1 of sprites.allOfKind(SpriteKind.Snake)) {
-        Snakebody1 = sprites.create(assets.image`Greenthing body 1`, SpriteKind.SnakeBodies)
-        SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.ay = 50
-    }
+	
 })
 function ELijahs_COde () {
     for (let RoachL of tiles.getTilesByType(assets.tile`Roach`)) {
@@ -83,11 +81,17 @@ function ELijahs_COde () {
         tiles.placeOnTile(SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE, SnakeV)
         tiles.setTileAt(SnakeV, assets.tile`transparency16`)
         SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.ay = 50
+        tiles.setTileAt(tiles.getTileLocation(0, 0), assets.tile`transparency16`)
+        for (let SnakeB1 of Snakelist) {
+            Snakebody1 = sprites.create(assets.image`Greenthing body 1`, SpriteKind.SnakeBodies)
+            Snakebody1.setPosition(SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.x, SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.y)
+            SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.ay = 50
+        }
     }
 }
-let Roach: Sprite = null
-let SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE: Sprite = null
 let Snakebody1: Sprite = null
+let SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE: Sprite = null
+let Roach: Sprite = null
 let isNew = false
 let Boomerang: Sprite = null
 let Direction = 0
