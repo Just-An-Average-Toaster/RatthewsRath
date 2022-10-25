@@ -193,25 +193,6 @@ f 7 7 7 7 7 f 7 7 7 7 7 f 7 7 7
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `;
-            case "image13":
-            case "myImage":return img`
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-7 7 7 f 7 7 7 7 7 7 e e . . . . 
-f 7 7 7 f f 7 7 7 7 e e . . . . 
-f f 7 7 7 f 7 7 7 e d e e . . . 
-7 f 7 7 7 f f 7 7 e e d e d . . 
-7 f f 7 7 7 f 7 7 e e d e d . . 
-7 7 f 7 7 7 f f e e e e d d . . 
-7 7 f f 7 7 7 7 e d e e d . . . 
-7 7 7 f 7 7 7 7 e e e e d . . . 
-7 7 7 f 7 7 7 7 e e d e d . . . 
-7 7 7 f f 7 7 7 d e e d . . . . 
-7 7 7 7 f 7 7 7 e e e . . . . . 
-7 7 7 7 7 f 7 7 e e e . . . . . 
-. . . . . . . . . . . . . . . . 
-. . . . . . . . . . . . . . . . 
-`;
             case "image10":
             case "Snake Head":return img`
 . . . . . . . . . . . . . . . . 
@@ -247,6 +228,25 @@ f f 7 7 7 7 f f 7 7 7 7 7 f 7 7
 7 f 7 7 7 7 7 f 7 7 7 7 7 f f 7 
 7 f f 7 7 7 7 f f 7 7 7 7 7 f 7 
 7 7 f 7 7 7 7 7 f 7 7 7 7 7 f f 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`;
+            case "image13":
+            case "Long GReeennnn thingy tail":return img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+7 7 7 f 7 7 7 7 7 7 e e . . . . 
+f 7 7 7 f f 7 7 7 7 e e . . . . 
+f f 7 7 7 f 7 7 7 e d e e . . . 
+7 f 7 7 7 f f 7 7 e e d e d . . 
+7 f f 7 7 7 f 7 7 e e d e d . . 
+7 7 f 7 7 7 f f e e e e d d . . 
+7 7 f f 7 7 7 7 e d e e d . . . 
+7 7 7 f 7 7 7 7 e e e e d . . . 
+7 7 7 f 7 7 7 7 e e d e d . . . 
+7 7 7 f f 7 7 7 d e e d . . . . 
+7 7 7 7 f 7 7 7 e e e . . . . . 
+7 7 7 7 7 f 7 7 e e e . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 `;
