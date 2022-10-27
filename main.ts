@@ -272,6 +272,7 @@ tileUtil.createSpritesOnTiles(assets.tile`Sign2`, img`
     . . . . . . . . d . . . . . . . 
     `, SpriteKind.Sign2)
 Direction = 150
+ELijahs_COde()
 game.onUpdate(function () {
     for (let BUMMMMMMMMMPPPPPP of sprites.allOfKind(SpriteKind.Enemy)) {
         if (BUMMMMMMMMMPPPPPP.isHittingTile(CollisionDirection.Left)) {
