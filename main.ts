@@ -1,6 +1,8 @@
 namespace SpriteKind {
     export const Snake = SpriteKind.create()
     export const SnakeBodies = SpriteKind.create()
+    export const Sign = SpriteKind.create()
+    export const Sign2 = SpriteKind.create()
 }
 let Snakelist: number[] = []
 scene.onOverlapTile(SpriteKind.Player, assets.tile`BadWater`, function (sprite, location) {
@@ -19,6 +21,10 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
         oneBoomerang = false
     }
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Sign2, function (sprite, otherSprite) {
+    pause(250)
+    Text = 2
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (mySprite2.vy == 0) {
         mySprite2.vy += -200
@@ -34,6 +40,10 @@ sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, oth
         oneBoomerang = true
     }
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Sign, function (sprite, otherSprite) {
+    pause(250)
+    Text = 1
+})
 function swapImages () {
     if (Boomerang.image == BoomerangImage[0]) {
         Boomerang.setImage(BoomerangImage[1])
@@ -45,33 +55,6 @@ function swapImages () {
         Boomerang.setImage(BoomerangImage[0])
     }
 }
-controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    mySprite2.setImage(assets.image`Ratthew`)
-    Direction = 150
-})
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
-    if (isNew == false) {
-        otherSprite.destroy()
-        oneBoomerang = true
-    }
-})
-sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
-    game.over(false, effects.slash)
-})
-scene.onOverlapTile(SpriteKind.Player, assets.tile`Spikes`, function (sprite, location) {
-    game.over(false, effects.slash)
-})
-sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
-    pause(250)
-    Text += 1
-})
-scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
-    Boomerang.follow(mySprite2, 150)
-    isNew = false
-})
-sprites.onCreated(SpriteKind.Snake, function (sprite) {
-	
-})
 function ELijahs_COde () {
     for (let RoachL of tiles.getTilesByType(assets.tile`Roach`)) {
         Roach = sprites.create(assets.image`Roach other direction`, SpriteKind.Enemy)
@@ -93,9 +76,33 @@ function ELijahs_COde () {
         }
     }
 }
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    mySprite2.setImage(assets.image`Ratthew`)
+    Direction = 150
+})
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
+    if (isNew == false) {
+        otherSprite.destroy()
+        oneBoomerang = true
+    }
+})
+sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Player, function (sprite, otherSprite) {
+    game.over(false, effects.slash)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`Spikes`, function (sprite, location) {
+    game.over(false, effects.slash)
+})
+scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
+    Boomerang.follow(mySprite2, 150)
+    isNew = false
+})
+sprites.onCreated(SpriteKind.Snake, function (sprite) {
+	
+})
 let Snakebody1: Sprite = null
 let SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE: Sprite = null
 let Roach: Sprite = null
+let Text = 0
 let isNew = false
 let Boomerang: Sprite = null
 let Direction = 0
@@ -103,7 +110,7 @@ let oneBoomerang = false
 let Animate = false
 let BoomerangImage: Image[] = []
 let mySprite2: Sprite = null
-tiles.setCurrentTilemap(tilemap`level1`)
+tiles.setCurrentTilemap(tilemap`level0`)
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -240,9 +247,26 @@ assets.image`Ratarang4`
 Animate = false
 oneBoomerang = true
 tileUtil.createSpritesOnTiles(assets.tile`Sewage`, assets.image`Sewage Sprite`, SpriteKind.Enemy)
-tileUtil.createSpritesOnTiles(assets.tile`Sign`, assets.image`flor`, SpriteKind.Food)
+tileUtil.createSpritesOnTiles(assets.tile`Sign`, assets.image`flor`, SpriteKind.Sign)
+tileUtil.createSpritesOnTiles(assets.tile`Sign2`, img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . f . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . d . . . . . . . 
+    `, SpriteKind.Sign2)
 Direction = 150
-let Text = 0
 ELijahs_COde()
 game.onUpdate(function () {
     for (let BUMMMMMMMMMPPPPPP of sprites.allOfKind(SpriteKind.Enemy)) {
@@ -286,8 +310,14 @@ game.onUpdateInterval(1, function () {
         Boomerang.follow(mySprite2, 150)
         isNew = false
     }
+})
+game.onUpdateInterval(1, function () {
     if (Text == 1) {
         game.showLongText("fortnite", DialogLayout.Bottom)
-        Text += -1
+        Text = 0
+    }
+    if (Text == 2) {
+        game.showLongText("royale", DialogLayout.Bottom)
+        Text = 0
     }
 })
