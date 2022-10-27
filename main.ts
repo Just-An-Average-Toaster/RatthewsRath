@@ -4,7 +4,6 @@ namespace SpriteKind {
     export const Sign = SpriteKind.create()
     export const Sign2 = SpriteKind.create()
 }
-let Snakelist: number[] = []
 scene.onOverlapTile(SpriteKind.Player, assets.tile`BadWater`, function (sprite, location) {
     game.over(false, effects.melt)
 })
@@ -67,13 +66,17 @@ function ELijahs_COde () {
         SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE = sprites.create(assets.image`Snake Head`, SpriteKind.Snake)
         tiles.placeOnTile(SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE, SnakeV)
         tiles.setTileAt(SnakeV, assets.tile`transparency16`)
-        SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.ay = 50
+        SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.follow(mySprite2, 53)
         tiles.setTileAt(tiles.getTileLocation(0, 0), assets.tile`transparency16`)
-        for (let SnakeB1 of Snakelist) {
-            Snakebody1 = sprites.create(assets.image`Greenthing body 1`, SpriteKind.SnakeBodies)
-            Snakebody1.setPosition(SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.x, SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.y)
-            SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.ay = 50
-        }
+        Snakebody1 = sprites.create(assets.image`Greenthing body 1`, SpriteKind.SnakeBodies)
+        Snakebody1.setPosition(SnakeV.x + 13, SnakeV.y)
+        Snakebody1.follow(SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE, 52)
+        greenboibody2 = sprites.create(assets.image`LOng boi 2`, SpriteKind.SnakeBodies)
+        greenboibody2.setPosition(SnakeV.x + 26, SnakeV.y)
+        greenboibody2.follow(Snakebody1, 51)
+        LOng_green_guy_thingy_3_tail_end = sprites.create(assets.image`myImage`, SpriteKind.SnakeBodies)
+        LOng_green_guy_thingy_3_tail_end.setPosition(SnakeV.x + 39, SnakeV.y)
+        LOng_green_guy_thingy_3_tail_end.follow(greenboibody2, 50)
     }
 }
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -99,6 +102,8 @@ scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
 sprites.onCreated(SpriteKind.Snake, function (sprite) {
 	
 })
+let LOng_green_guy_thingy_3_tail_end: Sprite = null
+let greenboibody2: Sprite = null
 let Snakebody1: Sprite = null
 let SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE: Sprite = null
 let Roach: Sprite = null
@@ -267,7 +272,6 @@ tileUtil.createSpritesOnTiles(assets.tile`Sign2`, img`
     . . . . . . . . d . . . . . . . 
     `, SpriteKind.Sign2)
 Direction = 150
-ELijahs_COde()
 game.onUpdate(function () {
     for (let BUMMMMMMMMMPPPPPP of sprites.allOfKind(SpriteKind.Enemy)) {
         if (BUMMMMMMMMMPPPPPP.isHittingTile(CollisionDirection.Left)) {
