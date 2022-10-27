@@ -2,6 +2,7 @@ namespace SpriteKind {
     export const Snake = SpriteKind.create()
     export const SnakeBodies = SpriteKind.create()
 }
+let Snakelist: number[] = []
 scene.onOverlapTile(SpriteKind.Player, assets.tile`BadWater`, function (sprite, location) {
     game.over(false, effects.melt)
 })
@@ -44,31 +45,6 @@ function swapImages () {
         Boomerang.setImage(BoomerangImage[0])
     }
 }
-function ELijahs_COde () {
-    for (let RoachL of tiles.getTilesByType(assets.tile`Roach`)) {
-        Roach = sprites.create(assets.image`Roach other direction`, SpriteKind.Enemy)
-        tiles.placeOnTile(Roach, RoachL)
-        tiles.setTileAt(RoachL, assets.tile`transparency16`)
-        Roach.ay = 50
-        Roach.setVelocity(-50, 0)
-    }
-    for (let SnakeV of tiles.getTilesByType(assets.tile`Snake`)) {
-        SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE = sprites.create(assets.image`Snake Head`, SpriteKind.Snake)
-        tiles.placeOnTile(SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE, SnakeV)
-        tiles.setTileAt(SnakeV, assets.tile`transparency16`)
-        SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.follow(mySprite2, 53)
-        tiles.setTileAt(tiles.getTileLocation(0, 0), assets.tile`transparency16`)
-        snakebody1 = sprites.create(assets.image`Greenthing body 1`, SpriteKind.SnakeBodies)
-        snakebody1.setPosition(SnakeV.x + 13, SnakeV.y)
-        snakebody1.follow(SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE, 52)
-        greenboibody2 = sprites.create(assets.image`LOng boi 2`, SpriteKind.SnakeBodies)
-        greenboibody2.setPosition(SnakeV.x + 26, SnakeV.y)
-        greenboibody2.follow(snakebody1, 51)
-        LOng_green_guy_thingy_3_tail_end = sprites.create(assets.image`Long GReeennnn thingy tail`, SpriteKind.SnakeBodies)
-        LOng_green_guy_thingy_3_tail_end.setPosition(SnakeV.x + 39, SnakeV.y)
-        LOng_green_guy_thingy_3_tail_end.follow(greenboibody2, 50)
-    }
-}
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     mySprite2.setImage(assets.image`Ratthew`)
     Direction = 150
@@ -96,9 +72,28 @@ scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
 sprites.onCreated(SpriteKind.Snake, function (sprite) {
 	
 })
-let LOng_green_guy_thingy_3_tail_end: Sprite = null
-let greenboibody2: Sprite = null
-let snakebody1: Sprite = null
+function ELijahs_COde () {
+    for (let RoachL of tiles.getTilesByType(assets.tile`Roach`)) {
+        Roach = sprites.create(assets.image`Roach other direction`, SpriteKind.Enemy)
+        tiles.placeOnTile(Roach, RoachL)
+        tiles.setTileAt(RoachL, assets.tile`transparency16`)
+        Roach.ay = 50
+        Roach.setVelocity(-50, 0)
+    }
+    for (let SnakeV of tiles.getTilesByType(assets.tile`Snake`)) {
+        SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE = sprites.create(assets.image`Snake Head`, SpriteKind.Snake)
+        tiles.placeOnTile(SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE, SnakeV)
+        tiles.setTileAt(SnakeV, assets.tile`transparency16`)
+        SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.ay = 50
+        tiles.setTileAt(tiles.getTileLocation(0, 0), assets.tile`transparency16`)
+        for (let SnakeB1 of Snakelist) {
+            Snakebody1 = sprites.create(assets.image`Greenthing body 1`, SpriteKind.SnakeBodies)
+            Snakebody1.setPosition(SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.x, SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.y)
+            SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.ay = 50
+        }
+    }
+}
+let Snakebody1: Sprite = null
 let SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE: Sprite = null
 let Roach: Sprite = null
 let isNew = false
@@ -108,7 +103,6 @@ let oneBoomerang = false
 let Animate = false
 let BoomerangImage: Image[] = []
 let mySprite2: Sprite = null
-let Snakelist: number[] = []
 tiles.setCurrentTilemap(tilemap`level1`)
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
