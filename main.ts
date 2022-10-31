@@ -22,7 +22,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`EndPipe`, function (sprite, l
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (oneBoomerang == true) {
         Boomerang = sprites.create(BoomerangImage[0], SpriteKind.Projectile)
-        Boomerang.setPosition(mySprite2.x, mySprite2.y)
+        Boomerang.setPosition(Ratthew.x, Ratthew.y)
         Boomerang.setVelocity(Direction, 0)
         Animate = true
         isNew = true
@@ -34,12 +34,12 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Sign2, function (sprite, otherSp
     Text = 2
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (mySprite2.vy == 0) {
-        mySprite2.vy += -200
+    if (Ratthew.vy == 0) {
+        Ratthew.vy += -200
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
-    mySprite2.setImage(assets.image`RatthewOther`)
+    Ratthew.setImage(assets.image`RatthewOther`)
     Direction = -150
 })
 sprites.onOverlap(SpriteKind.Enemy, SpriteKind.Projectile, function (sprite, otherSprite) {
@@ -72,14 +72,14 @@ function ELijahs_COde () {
         Roach.setVelocity(-50, 0)
     }
     for (let SnakeV of tiles.getTilesByType(assets.tile`Snake`)) {
-        SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE = sprites.create(assets.image`Snake Head`, SpriteKind.Snake)
-        tiles.placeOnTile(SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE, SnakeV)
+        Snakehead = sprites.create(assets.image`Snake Head`, SpriteKind.Snake)
+        tiles.placeOnTile(Snakehead, SnakeV)
         tiles.setTileAt(SnakeV, assets.tile`transparency16`)
-        SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE.follow(mySprite2, 53)
         tiles.setTileAt(tiles.getTileLocation(0, 0), assets.tile`transparency16`)
+        Snakehead.ax = -50
         Snakebody1 = sprites.create(assets.image`Greenthing body 1`, SpriteKind.SnakeBodies)
         Snakebody1.setPosition(SnakeV.x + 13, SnakeV.y)
-        Snakebody1.follow(SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE, 52)
+        Snakebody1.follow(Snakehead, 52)
         greenboibody2 = sprites.create(assets.image`LOng boi 2`, SpriteKind.SnakeBodies)
         greenboibody2.setPosition(SnakeV.x + 26, SnakeV.y)
         greenboibody2.follow(Snakebody1, 51)
@@ -89,7 +89,7 @@ function ELijahs_COde () {
     }
 }
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    mySprite2.setImage(assets.image`Ratthew`)
+    Ratthew.setImage(assets.image`Ratthew`)
     Direction = 150
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
@@ -105,7 +105,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`Spikes`, function (sprite, lo
     game.over(false, effects.slash)
 })
 scene.onHitWall(SpriteKind.Projectile, function (sprite, location) {
-    Boomerang.follow(mySprite2, 150)
+    Boomerang.follow(Ratthew, 150)
     isNew = false
 })
 sprites.onCreated(SpriteKind.Snake, function (sprite) {
@@ -122,14 +122,14 @@ function makeSign () {
 }
 function startLevel () {
     if (Current_Level == 0) {
-        tiles.setCurrentTilemap(tilemap`level0`)
+        tiles.setCurrentTilemap(tilemap`level1`)
     } else if (Current_Level == 1) {
         tiles.setCurrentTilemap(tilemap`level1`)
     }
-    scene.cameraFollowSprite(mySprite2)
-    mySprite2.ay = 500
-    controller.moveSprite(mySprite2, 100, 0)
-    tiles.placeOnRandomTile(mySprite2, assets.tile`Spawn`)
+    scene.cameraFollowSprite(Ratthew)
+    Ratthew.ay = 500
+    controller.moveSprite(Ratthew, 100, 0)
+    tiles.placeOnRandomTile(Ratthew, assets.tile`Spawn`)
     for (let value of tiles.getTilesByType(assets.tile`Spawn`)) {
         tiles.setTileAt(value, assets.tile`transparency16`)
     }
@@ -149,7 +149,7 @@ function startLevel () {
 let LOng_green_guy_thingy_3_tail_end: Sprite = null
 let greenboibody2: Sprite = null
 let Snakebody1: Sprite = null
-let SNAKE_OR_LONG_GREEN_THINGY_I_DUNNO_WHICHEVER_YOU_WANNA_CALL_IT_I_JUST_LIKE_LONG_VARIABLE: Sprite = null
+let Snakehead: Sprite = null
 let Roach: Sprite = null
 let isNew = false
 let Animate = false
@@ -158,7 +158,7 @@ let BoomerangImage: Image[] = []
 let Boomerang: Sprite = null
 let oneBoomerang = false
 let Text = 0
-let mySprite2: Sprite = null
+let Ratthew: Sprite = null
 let Current_Level = 0
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -283,7 +283,7 @@ scene.setBackgroundImage(img`
     ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
     `)
 Current_Level = 0
-mySprite2 = sprites.create(assets.image`Ratthew`, SpriteKind.Player)
+Ratthew = sprites.create(assets.image`Ratthew`, SpriteKind.Player)
 startLevel()
 game.onUpdate(function () {
     for (let BUMMMMMMMMMPPPPPP of sprites.allOfKind(SpriteKind.Enemy)) {
@@ -318,14 +318,13 @@ game.onUpdateInterval(80, function () {
         swapImages()
     }
 })
-game.onUpdateInterval(1, function () {
-    if (Animate == true && Boomerang.x > mySprite2.x + 69) {
-        Boomerang.follow(mySprite2, 150)
-        isNew = false
-    }
-    if (Animate == true && Boomerang.x < mySprite2.x - 69) {
-        Boomerang.follow(mySprite2, 150)
-        isNew = false
+game.onUpdateInterval(1000, function () {
+    if (Ratthew.y == Snakehead.y - 10) {
+        if (Ratthew.x > Snakehead.x) {
+            Snakehead.setVelocity(50, 15)
+        } else {
+            Snakehead.setVelocity(-50, 15)
+        }
     }
 })
 game.onUpdateInterval(1, function () {
@@ -340,5 +339,15 @@ game.onUpdateInterval(1, function () {
     if (Text == 3) {
         game.showLongText("3", DialogLayout.Bottom)
         Text = 0
+    }
+})
+game.onUpdateInterval(1, function () {
+    if (Animate == true && Boomerang.x > Ratthew.x + 69) {
+        Boomerang.follow(Ratthew, 150)
+        isNew = false
+    }
+    if (Animate == true && Boomerang.x < Ratthew.x - 69) {
+        Boomerang.follow(Ratthew, 150)
+        isNew = false
     }
 })
